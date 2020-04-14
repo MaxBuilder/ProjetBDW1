@@ -29,4 +29,4 @@ else
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');
 
-// Coucou
+// Coucou 2
