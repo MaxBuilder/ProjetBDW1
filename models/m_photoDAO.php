@@ -1,8 +1,8 @@
 <?php
 require_once(PATH_MODELS.'DAO.php');
 require_once(PATH_MODELS.'connexion.php');
-require_once(PATH_ENTITY.'Categorie.php');
-require_once(PATH_ENTITY.'Photo.php');
+require_once(PATH_ENTITY.'categorie.php');
+require_once(PATH_ENTITY.'photo.php');
 
 class PhotoDAO extends DAO {
 
@@ -42,15 +42,13 @@ class PhotoDAO extends DAO {
         if($res) {
             $nomFich = 'DSC'. $this->insertId() . strtolower(strrchr($_FILES['fileinput']['name'], '.'));
             move_uploaded_file($_FILES['fileinput']['tmp_name'], PATH_IMAGES.$nomFich);
-            $res = $this->queryBdd('UPDATE Photo SET nomFich = ? WHERE description = ? AND catId = ?', array($nomFich, $description, $catId));
+            $res = $this->queryBdd('UPDATE Photo SET nomFich = ? WHERE description = ? AND catId = ?', array($nomFich, $photoDesc, $photoCatId));
 
             if($res) {
                 $res = $this->getPhotoByNomFich($nomFich);
             }
         }
-
         return $res;
-
     }
 
     public function getPhotoByNomFich($nomFich)

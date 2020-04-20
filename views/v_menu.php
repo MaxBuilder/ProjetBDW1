@@ -16,7 +16,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
 
-        <li <?php echo ($page=='index' ? 'class="active"':'')?>>
+        <li class="test" <?php echo ($page=='index' ? 'class="active"':'')?>>
             <a href="index.php">
                 <?= MENU_ACCUEIL ?>
             </a>

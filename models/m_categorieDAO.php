@@ -44,7 +44,7 @@ class CategorieDAO extends DAO
         else return null;
     }
 
-    public function getnomCategorie($catId)
+    public function getNomCat($catId)
     {
         $res = $this->queryRow('SELECT nomCat FROM Categorie WHERE catId = ?', array($catId));
         if($res)
@@ -54,12 +54,18 @@ class CategorieDAO extends DAO
         else return null;
     }
 
-
-
     public function insertCat($nomCat)
     {
         $res = $this->queryBdd('INSERT INTO Categorie(nomCat) VALUES(?)',array($nomCat));
         return $res;
     }
 
+    public function getCatID($nomCat) {
+        $res = $this->queryRow('SELECT catId FROM Categorie WHERE nomCat = ?', array($nomCat));
+        if($res)
+        {
+            return $res['catId'];
+        }
+        else return null;
+    }
 }

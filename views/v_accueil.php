@@ -35,6 +35,7 @@
             <input type="submit" value="<?=SUBMIT?>" onselect="submit()">
         </label>
     </form>
+
 <?php
 foreach ($catById as $value)
 {?>

@@ -29,10 +29,10 @@
 		<header class="header" >
 			<section class="container" >
 				<div class = "row">
-					<div class = "col-md-2 col-sm-2 col-xs-12">
-						<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" class="img-circle">
+					<div class = "col-md-1 col-sm-2 col-xs-12">
+						<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="64" width="64 " class="img-circle">
 					</div>
-					<div class="col-md-10 col-sm-10 col-xs-12">
+					<div class="col-md-8 col-sm-4 col-xs-12">
 						<h2><?= TITRE ?></h2>
 					</div>
 				</div>
