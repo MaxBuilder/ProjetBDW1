@@ -13,7 +13,7 @@
 if(isset($alert))
 {
 ?>
-	<div class="alert alert-<?= isset($alert['classeAlert']) ? $alert['classAlert'] : 'danger' ?>">
+	<div class="alert alert-<?= isset($alert['classeAlert']) ? $alert['classAlert'] : 'info' ?>">
 		<strong><?= $alert['messageAlert'] ?></strong>
 	</div>
 <?php

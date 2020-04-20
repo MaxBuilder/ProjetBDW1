@@ -21,7 +21,7 @@
 
     <form action="" method="get">
         <label>Quelles photos souhaitez-vous afficher ?
-            <select name="choix_categorie" value="choix_categorie">
+            <select style="color:#181818" name="choix_categorie" value="choix_categorie">
                 <option value="Toutes les photos">Toutes les photos</option>
                 <?php
                 foreach ($cat as $value)
@@ -32,11 +32,13 @@
                 echo $_POST['choix_categorie'];?>
 
             </select>
-            <input type="submit" value="<?=SUBMIT?>" onselect="submit()">
+            <input class="validerbutton" type="submit" value="<?=SUBMIT?>" onselect="submit()">
         </label>
     </form>
 
 <?php
+
+// Affichage des images
 foreach ($catById as $value)
 {?>
     <a href="index.php?page=image&id=<?=$value->getphotoId()?>"><img src="<?=PATH_IMAGES.$value->getnomFich()?>"></a>

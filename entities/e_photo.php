@@ -14,24 +14,24 @@ class Photo {
         $this->_catId = $catId;
     }
 
-    public function getphotoId(){
+    public function getPhotoId(){
         return $this->_photoId;
     }
-    public function setphotoId($photoId){
+    public function setPhotoId($photoId){
         $this->_photoId = $photoId;
     }
 
-    public function getnomFich(){
+    public function getNomFich(){
         return $this->_nomFich;
     }
-    public function setnomFich($nomFich){
+    public function setNomFich($nomFich){
         $this->_nomFich = $nomFich;
     }
 
-    public function getdescription(){
+    public function getDescription(){
         return $this->_description;
     }
-    public function setdescription($description){
+    public function setDescription($description){
         $this->_description = $description;
     }
 

@@ -7,14 +7,14 @@
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
     <!--  Début de la page -->
-    <h1 class="styletitre"><?=TITRE_AJOUT_PHOTO?></h1>
+    <h1><?=TITRE_AJOUT_PHOTO?></h1>
     <br>
     <form method="POST" enctype="multipart/form-data">
         <div>
             <label>
                 <?=CHOIX_FICH?>
             </label>
-            <input name="fileinput" type="file">
+            <input style="color:#1178bc;" name="fileinput" type="file">
         </div>
         <br>
         <div>
@@ -22,14 +22,14 @@
                 <?=DESCRIPTION?>
             </label>
             <br>
-            <textarea type="text" name="DESCRIPTION" rows="4" cols="40"></textarea>
+            <textarea style="color:#181818;" type="text" name="DESCRIPTION" rows="4" cols="40"></textarea>
         </div>
         <br>
         <div>
             <label>
                 <?=CHOIX_CAT?>
             </label>
-            <select name="select">
+            <select style="color:#181818" name="select">
                 <option value="NONE"><?=NONE?></option>
                 <?php
                 foreach ($cat as $value)

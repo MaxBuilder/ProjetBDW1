@@ -19,10 +19,10 @@ $cat = $catDAO->getAll();
 
 if(!isset($_GET['choix_categorie']))
 {
-    $catById = $catDAO->getById('Toutes les photos');
+    $catById = $catDAO->getById(htmlspecialchars('Toutes les photos'));
 }
 else {
-    $catById = $catDAO->getById($_GET['choix_categorie']);
+    $catById = $catDAO->getById(htmlspecialchars($_GET['choix_categorie']));
 }
 
 
@@ -46,8 +46,10 @@ if(isset($_GET['message']))
 {
     $message = htmlspecialchars($_GET['message']);
     $alert = choixAlert($message);
-}else{
+}else
+    {
     $nbP = count($catById);
     $alert = choixAlert('photos_selection',$nbP);
 }
+
 require_once(PATH_VIEWS.$page.'.php');

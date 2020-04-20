@@ -11,22 +11,22 @@ class Categorie
         $this->_nomCat = $nomCat;
     }
 
-    public function getcatId()
+    public function getCatId()
     {
         return $this->_catId;
     }
 
-    public function setcatId($catId)
+    public function setCatId($catId)
     {
         $this->_catId = $catId;
     }
 
-    public function getnomCat()
+    public function getNomCat()
     {
         return $this->_nomCat;
     }
 
-    public function setnomCat($nomCat)
+    public function setNomCat($nomCat)
     {
         $this->_nomCat = $nomCat;
     }

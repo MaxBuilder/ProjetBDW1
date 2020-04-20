@@ -62,7 +62,7 @@ if(isset($_FILES['fileinput']) && isset($_POST['select']) && isset($_POST['DESCR
             $alert = choixAlert($photoDAO->getErreur());
         }
         else {
-            //header('Location: index.php?page=film&id='.$photo->getID());
+            header('Location: index.php?page=image&id='.$photo->getPhotoId());
             //exit();
         }
     }

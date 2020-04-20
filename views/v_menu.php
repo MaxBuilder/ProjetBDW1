@@ -12,23 +12,37 @@
 ?>
 <!-- Menu du site -->
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
 
-        <li class="test" <?php echo ($page=='index' ? 'class="active"':'')?>>
-            <a href="index.php">
+      <!-- Catégorie ajoutée à gauche -->
+    <ul class="nav navbar-nav navbar-left">
+        <li <?php echo ($page=='index' ? 'class="active"':'')?>>
+            <a href="index.php" style="font-size: 120%">
                 <?= MENU_ACCUEIL ?>
             </a>
         </li>
-
-        <li class="test" <?php echo ($page== 'index' ? 'class="active"':'')?>>
-            <a href="index.php?page=ajout_photo">
+        <li <?php echo ($page== 'index' ? 'class="active"':'')?>>
+            <a href="index.php?page=ajout_photo" style="font-size: 120%">
                 <?=AJOUT_PHOTO?>
             </a>
         </li>
-
-
     </ul>
+
+      <!-- Catégorie ajoutée à droite -->
+      <ul class ="nav navbar-nav navbar-right">
+          <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
+              <a href="index.php?page=inscription" style="font-size: 120%">
+                  <?=Inscription?> <!-- Temporaire -->
+              </a>
+          </li>
+
+          <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
+              <a href="index.php?page=identification" style="font-size: 120%">
+                  <?php if(isset($_SESSION['logged'])) echo MENU_DECONNECT; else echo MENU_IDENTIFICATION?>
+              </a>
+          </li>
+      </ul>
+
   </div>
 </nav>
