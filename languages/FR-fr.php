@@ -2,18 +2,46 @@
 //isoler ici dans des constantes les textes affichés sur le site
 define('LOGO', 'Logo de la compagnie'); // Affiché si image non trouvée
 
+//Textes du menu accueil
 define('MENU_ACCUEIL','Accueil');
-define('TITRE_PAGE_ACCUEIL','Accueil');
-define('TITRE_PAGE_HELLO','Résultat');
+define('MENU_IDENTIFICATION','Connexion');
+define('MENU_DECONNECT','Déconnexion');
+define('AJOUT_PHOTO','Ajouter une photo');
+define('AJOUT_CAT','Ajouter une catégorie');
 
+//les champs de connexions
+define('MDP', 'Mot de passe');
+define('ID','Identifiant');
+define('LOGIN','Se connecter');
+
+//les erreurs
+define('MESSAGE_CONNECT','Connection réussie !');
+define('ERREUR_MDP','Mot de passe incorrect.');
+define('ERREUR_IDENTIFIANT','Cet identifant est inconnu.');
 define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");
+define('ERREUR_QUERY', 'Problème d\'accès à la base de données. Contactez l\'administrateur.');
+define('ERREUR_CHOIX_CAT','Veuillez choisir une catégorie pour votre image.');
+define('ERREUR_FICHIER','L\'extension du fichier n\'est pas correcte.');
+define('ERREUR_TAILLE','La taille du fichier excède la limite de 100 ko.');
+define('ERREUR_CAT_EXIST','La categorie existe deja.');
 
-//correction
-define('ERREUR_CONNECT_BDD','Erreur de connection à la base de données');
-define('ERREUR_INSCRIPTION', "Login inconnu");
-define('ERREUR_QUERY_BDD',"Erreur d'accès à la base de données");
-define('SUBMIT', "Valider");
-define('NOM', "Login");
-define('TITRE', 'PHP-BD');
+// Les titres
+define('TITRE_PAGE_DETAIL','Les détails sur cette photo');
+define('TITRE', 'TD4');
+define('TITRE_PAGE_ACCUEIL','Accueil');
+define('TITRE_IDENTIFICATION','Connexion pour modifier le catalogue');
+define('CHOIX_FICH','Choix du fichier : ');
+define('DESCRIPT','Description de la photo : ');
+define('CHOIX_CAT','Choix de la catégorie : ');
+define('TITRE_AJOUT_CAT','Ajout d\'une catégorie');
+define('TITRE_AJOUT_PHOTO','Ajout d\'une photo');
+define('CHOIX_DE_CAT','Entrez le nom de la catégorie');
 
+// nom bouttons
+define('SUBMIT','Valider');
+define('ADD', 'Ajouter');
+define('NONE','- -');
+
+// messages d'info des photos
+define('PHOTOS_SELECTION',' photos sélectionnées.');

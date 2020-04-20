@@ -7,17 +7,47 @@
  * http://www.opensource.org/licenses/MIT
  */
 
+require_once(PATH_MODELS.'categorieDAO.php');
+
 if (isset($_GET['nom']))
 {
-  $nom =  htmlspecialchars($_GET['nom']);
+    $nom =  htmlspecialchars($_GET['nom']);
 }
 
-//traitement des alertes
+$catDAO = new CategorieDAO(DEBUG);
+$cat = $catDAO->getAll();
+
+if(!isset($_GET['choix_categorie']))
+{
+    $catById = $catDAO->getById('Toutes les photos');
+}
+else {
+    $catById = $catDAO->getById($_GET['choix_categorie']);
+}
+
+
+if(is_null($cat))
+{
+    if(!is_null($catDAO->getErreur()))
+    {
+        $erreur = 'query';
+    }
+}
+
+if(is_null($catById))
+{
+    if(!is_null($catDAO->getErreur()))
+    {
+        $erreur = 'query';
+    }
+}
+
 if(isset($_GET['message']))
 {
-  $message = htmlspecialchars($_GET['message']);
-  $alert = choixAlert($message);
+    $message = htmlspecialchars($_GET['message']);
+    $alert = choixAlert($message);
+}else{
+    $nbP = count($catById);
+    $alert = choixAlert('photos_selection',$nbP);
 }
-
-//appel de la vue
 require_once(PATH_VIEWS.$page.'.php');
