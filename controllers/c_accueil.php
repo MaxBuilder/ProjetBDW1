@@ -46,7 +46,8 @@ if(isset($_GET['message']))
 {
     $message = htmlspecialchars($_GET['message']);
     $alert = choixAlert($message);
-}else
+}
+else
     {
     $nbP = count($catById);
     $alert = choixAlert('photos_selection',$nbP);
