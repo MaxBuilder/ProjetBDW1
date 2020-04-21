@@ -1,7 +1,7 @@
 <?php
 require_once(PATH_MODELS.'photoDAO.php');
 require_once(PATH_MODELS.'categorieDAO.php');
-
+session_start();
 if (isset($_GET['nom']))
 {
     $nom =  htmlspecialchars($_GET['nom']);

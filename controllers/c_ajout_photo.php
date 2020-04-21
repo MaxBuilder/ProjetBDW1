@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once(PATH_MODELS.'categorieDAO.php');
 require_once(PATH_MODELS.'photoDAO.php');
 

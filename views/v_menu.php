@@ -33,12 +33,16 @@
       <ul class ="nav navbar-nav navbar-right">
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
               <a href="index.php?page=inscription" style="font-size: 120%">
-                  <?=Inscription?> <!-- Temporaire -->
+                  <?php if(isset($_SESSION['logged'])){
+                      echo $_SESSION['pseudo'];
+                  }else{
+                      echo "Insciption";
+                  } ?>
               </a>
           </li>
 
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
-              <a href="index.php?page=identification" style="font-size: 120%">
+              <a href="index.php?page=connexion" style="font-size: 120%">
                   <?php if(isset($_SESSION['logged'])) echo MENU_DECONNECT; else echo MENU_IDENTIFICATION?>
               </a>
           </li>

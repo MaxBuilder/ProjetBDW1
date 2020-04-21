@@ -6,7 +6,7 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
-
+session_start();
 require_once(PATH_MODELS.'categorieDAO.php');
 
 if (isset($_GET['nom']))
