@@ -22,24 +22,38 @@
                 <?= MENU_ACCUEIL ?>
             </a>
         </li>
-        <li <?php echo ($page== 'index' ? 'class="active"':'')?>>
-            <a href="index.php?page=ajout_photo" style="font-size: 120%">
-                <?=AJOUT_PHOTO?>
-            </a>
-        </li>
+
+        <?php
+        if(isset($_SESSION['logged'])) { ?>
+            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+                <a href="index.php?page=ajout_photo" style="font-size: 120%">
+                    <?= AJOUT_PHOTO ?>
+                </a>
+            </li>
+        <?php
+        } ?>
     </ul>
 
       <!-- Catégorie ajoutée à droite -->
       <ul class ="nav navbar-nav navbar-right">
+          <?php
+          if(!isset($_SESSION['logged']))
+          { ?>
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
               <a href="index.php?page=inscription" style="font-size: 120%">
-                  <?php if(isset($_SESSION['logged'])){
-                      echo $_SESSION['pseudo'];
-                  }else{
-                      echo "Insciption";
-                  } ?>
+                  <?=MENU_INSCRIPTION?>
               </a>
           </li>
+          <?php
+          }
+          else {?>
+          <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
+              <a href="index.php?page=compte" style="font-size: 120%">
+                  <?=MENU_COMPTE?>
+              </a>
+          </li>
+          <?php
+          }?>
 
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
               <a href="index.php?page=connexion" style="font-size: 120%">

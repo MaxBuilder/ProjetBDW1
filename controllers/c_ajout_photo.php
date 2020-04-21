@@ -21,9 +21,9 @@ if(is_null($cat))
     }
 }
 
-if(isset($_FILES['fileinput']) && isset($_POST['select']) && isset($_POST['DESCRIPTION'])) {
+if(isset($_FILES['CHOIX_FICH']) && isset($_POST['CHOIX_CAT']) && isset($_POST['DESCRIPTION'])) {
     $target_dir = "assets/images/";
-    $target_file = $target_dir . basename($_FILES['fileinput']['name']);
+    $target_file = $target_dir . basename($_FILES['CHOIX_FICH']['name']);
     $uploadOk = 1;
     $fichier_ext = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -38,7 +38,7 @@ if(isset($_FILES['fileinput']) && isset($_POST['select']) && isset($_POST['DESCR
         }
     }
 
-    if ($_FILES["fileinput"]["size"] > 100000) {
+    if ($_FILES["CHOIX_FICH"]["size"] > 100000) {
         $alert = choixAlert('Taille_FICH');
         $uploadOk = 0;
     }
@@ -48,13 +48,13 @@ if(isset($_FILES['fileinput']) && isset($_POST['select']) && isset($_POST['DESCR
         $uploadOk = 0;
     }
 
-    if($_POST['select'] == "NONE") {
+    if($_POST['CHOIX_CAT'] == "NONE") {
         $alert = choixAlert('choix_de_cat');
         $uploadOk = 0;
     }
 
     if($uploadOk == 1) {
-        $catId = $catDAO->getCatID(htmlspecialchars($_POST['select']));
+        $catId = $catDAO->getCatID(htmlspecialchars($_POST['CHOIX_CAT']));
         $photo = $photoDAO->insertPhoto($catId,htmlspecialchars($_POST['DESCRIPTION']));
 
         if(!$photo)

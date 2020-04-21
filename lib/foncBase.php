@@ -21,6 +21,9 @@ function choixAlert($message, $nbP = 0)
             $alert['messageAlert'] = MESSAGE_CONNECT;
             $alert['classAlert'] = 'success';
             break;
+        case 'pseudo_dispo' :
+            $alert['messageAlert'] = ERREUR_PSEUDO_AVAIL;
+            break;
         case 'MDP' :
             $alert['messageAlert'] = ERREUR_MDP;
             break;
@@ -35,7 +38,7 @@ function choixAlert($message, $nbP = 0)
             break;
         case 'photos_selection':
             $alert['messageAlert'] = $nbP.PHOTOS_SELECTION;
-            $alert['classAlert'] = 'success';
+            $alert['classAlert'] = 'succss';
             break;
         default :
             $alert['messageAlert'] = MESSAGE_ERREUR;

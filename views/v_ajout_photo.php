@@ -14,7 +14,7 @@
             <label>
                 <?=CHOIX_FICH?>
             </label>
-            <input style="color:#1178bc;" name="fileinput" type="file">
+            <input style="color:#1178bc;" name="CHOIX_FICH" type="file">
         </div>
         <br>
         <div>
@@ -29,12 +29,20 @@
             <label>
                 <?=CHOIX_CAT?>
             </label>
-            <select style="color:#181818" name="select">
+            <select style="color:#181818" name="CHOIX_CAT">
                 <option value="NONE"><?=NONE?></option>
                 <?php
                 foreach ($cat as $value)
                 { ?>
-                    <option name="Categorie" value="<?php if(isset($_POST['categorie'])) echo $_POST['categorie']; else echo $value->getnomCat();?>"  <?php if(isset($_POST['choix_categorie']) && ($_POST['choix_categorie'] == $value->getnomCat())) echo'selected';?>><?=$value->getnomCat()?></option>
+                    <option name="Categorie" value="<?php
+                    if(isset($_POST['categorie']))
+                        echo $_POST['categorie'];
+                    else echo $value->getnomCat();?>"
+                        <?php
+                        if(isset($_POST['choix_categorie']) && ($_POST['choix_categorie'] == $value->getnomCat()))
+                            echo'selected';?>>
+                        <?=$value->getnomCat()?>
+                    </option>
                     <?php
                 }
                 echo $_POST['choix_categorie']; ?>

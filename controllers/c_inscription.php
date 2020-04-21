@@ -1,21 +1,24 @@
 <?php
-require_once PATH_MODELS.'connexionDAO.php';
+require_once PATH_MODELS.'utilisateurDAO.php';
 
 session_start();
-if (isset($_SESSION["logged"])){
-    header('location:index.php?page=accueil');
 
-}else if (isset($_POST['mdp'])) {
-    $connexion = new ConnexionDAO(DEBUG);
-        if ($_POST['mdp'] == $_POST['mdp2']) {
-            $rep = $connexion->checkAvailability($_POST['pseudo']);
-            if ($rep) {
-                $mdpHash = md5($_POST['mdp']);
-                $connexion->register($_POST['pseudo'], $mdpHash);
-                $_GET['page'] = 'accueil';
-                header('location:index.php?page=accueil');
-            }
+if (isset($_POST['CHOIX_MDP'])) {
+    $connexion = new UtilisateurDAO(DEBUG);
+
+    if ($_POST['CHOIX_MDP'] == $_POST['CHOIX_MDPC']) {
+        $rep = $connexion->checkAvailability($_POST['CHOIX_PSEUDO']);
+
+        if ($rep) {
+            $mdpHash = md5($_POST['CHOIX_MDP']);
+            $connexion->register($_POST['CHOIX_PSEUDO'], $mdpHash);
+
+            $_GET['page'] = 'accueil';
+            header('location:index.php?page=accueil');
+        }
+        else $alert = choixAlert('pseudo_dispo');
     }
+    else $alert = choixAlert('MDP');
 }
 
 require_once(PATH_VIEWS.$page.'.php');

@@ -2,7 +2,7 @@
 require_once(PATH_MODELS.'DAO.php');
 require_once(PATH_MODELS.'connexion.php');
 
-class ConnexionDAO extends DAO {
+class UtilisateurDAO extends DAO {
 
     public function checkAvailability($pseudo)
     {
@@ -14,15 +14,12 @@ class ConnexionDAO extends DAO {
         }
     }
 
-    /*Cette fonction prend en entrée un pseudo et un mot de passe, associe une couleur aléatoire dans le tableau de taille fixe
-    array('red', 'green', 'blue', 'black', 'yellow', 'orange') et enregistre le nouvel utilisateur dans la relation utilisateur via la connexion*/
     public function register($pseudo, $hashPwd)
     {
-        $query = "INSERT INTO `utilisateur` (`pseudo`,`mdp`,`permission`) VALUES('$pseudo', '$hashPwd','1');";
+        $query = "INSERT INTO `Utilisateur` (`pseudo`,`mdp`,`permission`) VALUES('$pseudo', '$hashPwd','1');";
         $this->queryBdd($query);
     }
 
-    /*Cette fonction prend en entrée un pseudo et mot de passe et renvoie vrai si l'utilisateur existe (au moins un tuple dans le résultat), faux sinon*/
     public function getUser($pseudo, $hashPwd)
     {
         $query = "SELECT pseudo,mdp FROM utilisateur WHERE pseudo ='$pseudo' AND mdp ='$hashPwd'; ";
