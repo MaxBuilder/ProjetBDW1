@@ -12,7 +12,7 @@ if (isset($_SESSION["logged"])){
     $mdpHash = md5($_POST['CHOIX_MDP']);
 
     if($connexion->getUser($_POST['CHOIX_PSEUDO'],$mdpHash)) {
-        $_SESSION['utilID'] = $connexion->getID($_POST['pseudo']);
+        $_SESSION['utilID'] = $connexion->getID($_POST['CHOIX_PSEUDO']);
         $_SESSION['pseudo'] = $_POST['CHOIX_PSEUDO'];
         $_SESSION['logged'] = TRUE;
         $connect = TRUE;

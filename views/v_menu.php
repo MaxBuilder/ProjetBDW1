@@ -24,14 +24,14 @@
         </li>
 
         <?php
-        if(isset($_SESSION['logged'])) { ?>
-            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
-                <a href="index.php?page=ajout_photo" style="font-size: 120%">
-                    <?= AJOUT_PHOTO ?>
-                </a>
-            </li>
-        <?php
-        } ?>
+        if(isset($_SESSION['logged'])) {
+            echo "<li";
+            echo($page == 'index' ? 'class="active"' : '');
+            echo ">";
+            echo "<a href='index.php?page=ajout_photo' style='font-size: 120%'>";
+            echo AJOUT_PHOTO;
+            echo "</a></li>";
+        }?>
     </ul>
 
       <!-- Catégorie ajoutée à droite -->
