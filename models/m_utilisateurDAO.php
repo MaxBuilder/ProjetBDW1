@@ -40,7 +40,14 @@ class UtilisateurDAO extends DAO {
         }
         return $res[0]['utilID'];
     }
-
+    public function getPerm($pseudo){
+        $query = "SELECT permission FROM utilisateur WHERE pseudo ='$pseudo'; ";
+        $res = $this->queryAll($query);
+        if (empty($res)){
+            return 1;
+        }
+        return $res[0]['permission'];
+    }
 }
 
 ?>

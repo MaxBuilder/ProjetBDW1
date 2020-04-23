@@ -15,6 +15,7 @@ if (isset($_SESSION["logged"])){
         $_SESSION['utilID'] = $connexion->getID($_POST['CHOIX_PSEUDO']);
         $_SESSION['pseudo'] = $_POST['CHOIX_PSEUDO'];
         $_SESSION['logged'] = TRUE;
+        $_SESSION['perm'] = $connexion->getPerm($_POST['CHOIX_PSEUDO']);
         $connect = TRUE;
         header('location:index.php?page=accueil');
     }

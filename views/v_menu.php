@@ -47,10 +47,17 @@
           <?php
           }
           else {?>
-          <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
-              <a href="index.php?page=compte" style="font-size: 120%">
-                  <?=MENU_COMPTE?>
-              </a>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 120%">
+                    <?php echo $_SESSION['pseudo'];?>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href ='index.php?page=accueil' >mon compte</a>
+                    <a class="dropdown-item" href ='index.php?page=accueil' >mes photos</a>
+                    <?php if($_SESSION['perm']==0){
+                        echo "<a class='dropdown-item' href ='index.php?page=accueil' >Panel Admin</a>";
+                    }?>
+                  </div>
           </li>
           <?php
           }?>
