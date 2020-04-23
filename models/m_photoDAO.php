@@ -42,7 +42,7 @@ class PhotoDAO extends DAO {
         if($res) {
             $nomFich = 'DSC'. $this->insertId() . strtolower(strrchr($_FILES['CHOIX_FICH']['name'], '.'));
             move_uploaded_file($_FILES['CHOIX_FICH']['tmp_name'], PATH_IMAGES.$nomFich);
-            $res = $this->queryBdd("UPDATE Photo SET nomFich = '$nomFich' WHERE  catId = '$photoCatId';");
+            $res = $this->queryBdd("UPDATE Photo SET nomFich = ? WHERE  catId = ?;",array($nomFich,$photoCatId));
 
             if($res) {
                 $res = $this->getPhotoByNomFich($nomFich);
