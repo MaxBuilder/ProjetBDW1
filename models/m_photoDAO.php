@@ -36,16 +36,17 @@ class PhotoDAO extends DAO {
         else return null;
     }
 
-    public function insertPhoto($photoCatId,$photoDesc)
+    public function insertPhoto($photoCatId,$photoDesc,$utilID)
     {
         $res = $this->queryBdd('INSERT INTO Photo(description,catId) values (?,?)',array($photoDesc,$photoCatId));
         if($res) {
             $nomFich = 'DSC'. $this->insertId() . strtolower(strrchr($_FILES['CHOIX_FICH']['name'], '.'));
             move_uploaded_file($_FILES['CHOIX_FICH']['tmp_name'], PATH_IMAGES.$nomFich);
-            $res = $this->queryBdd('UPDATE Photo SET nomFich = ? WHERE description = ? AND catId = ?', array($nomFich, $photoDesc, $photoCatId));
+            $res = $this->queryBdd('UPDATE Photo SET nomFich = ? WHERE  catId = ?', array($nomFich,$photoCatId));
 
             if($res) {
                 $res = $this->getPhotoByNomFich($nomFich);
+                $res = $this->queryBdd('UPDATE Photo SET utilID = ? WHERE catId = ?', array($utilID,$photoCatId));
             }
         }
         return $res;
