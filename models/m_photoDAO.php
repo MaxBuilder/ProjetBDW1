@@ -46,7 +46,7 @@ class PhotoDAO extends DAO {
 
             if($res) {
                 $res = $this->getPhotoByNomFich($nomFich);
-                $res = $this->queryBdd('UPDATE Photo SET utilID = ? WHERE catId = ?', array($utilID,$photoCatId));
+                $this->queryBdd('UPDATE Photo SET utilID = ? WHERE catId = ?', array($utilID,$photoCatId));
             }
         }
         return $res;
