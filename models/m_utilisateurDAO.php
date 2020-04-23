@@ -35,7 +35,10 @@ class UtilisateurDAO extends DAO {
     {
         $query = "SELECT utilID FROM utilisateur WHERE pseudo ='$pseudo'; ";
         $res = $this->queryAll($query);
-        return $res[0];
+        if (empty($res)){
+            return 666;
+        }
+        return $res[0]['utilID'];
     }
 
 }
