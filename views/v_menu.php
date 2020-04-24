@@ -34,7 +34,7 @@
         } ?>
 
         <?php
-        if($_SESSION['perm'] == 0 && $_SESSION['logged'] == TRUE && $_GET['page'] != 'ajout_cat' && $_GET['page'] != 'image') { ?>
+        if(isset($_SESSION['logged']) && $_SESSION['perm'] == 0 && $_SESSION['logged'] == TRUE && $_GET['page'] != 'ajout_cat' && $_GET['page'] != 'image') { ?>
             <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
                 <a href="index.php?page=ajout_cat" style="font-size: 120%">
                     <?= AJOUT_CAT ?>
