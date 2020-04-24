@@ -15,6 +15,7 @@ define('AJOUT_CAT','Ajouter une catégorie');
 define('MDP', 'Mot de passe');
 define('ID','Identifiant');
 define('LOGIN','Se connecter');
+define('REGISTER','S\'inscrire');
 
 // Erreurs
 define('MESSAGE_CONNECT','Connection réussie !');
@@ -26,7 +27,7 @@ define('ERREUR_QUERY', 'Problème d\'accès à la base de données. Contactez l\
 define('ERREUR_CHOIX_CAT','Veuillez choisir une catégorie pour votre image.');
 define('ERREUR_FICHIER','L\'extension du fichier n\'est pas correcte.');
 define('ERREUR_TAILLE','La taille du fichier excède la limite de 100 ko.');
-define('ERREUR_CAT_EXIST','La categorie existe deja.');
+define('ERREUR_CAT_EXIST','La catégorie existe déja.');
 define('ERREUR_PSEUDO_AVAIL','Le pseudo existe déja.');
 
 // Titres
@@ -46,7 +47,12 @@ define('DESCRIPTION','Description de la photo : ');
 define('CHOIX_CAT','Choix de la catégorie : ');
 define('TITRE_AJOUT_CAT','Ajout d\'une catégorie');
 define('TITRE_AJOUT_PHOTO','Ajout d\'une photo');
-define('CHOIX_DE_CAT','Entrez le nom de la catégorie');
+define('CHOIX_DE_CAT','Entrez le nom de la catégorie :');
+define('SUPPR_OK','Photo supprimée avec succès !');
+define('SUPPR_ERR','Erreur lors de la suppression.');
+define('SUPPRIMER','Supprimer');
+define('MODIFIER','Modifier');
+define('TITRE_MODIF_PHOTO','Modifier la photo');
 
 // Boutons
 define('SUBMIT','Valider');
