@@ -15,9 +15,9 @@ function choixAlert($message, $nbP = 0)
             $alert['messageAlert'] = ERREUR_CHOIX_CAT;
             break;
         case 'categorieExist':
-            $alert['massageAlert'] = ERREUR_CAT_EXIST;
+            $alert['messageAlert'] = ERREUR_CAT_EXIST;
             break;
-        case 'ConnectER' :
+        case 'Connecter' :
             $alert['messageAlert'] = MESSAGE_CONNECT;
             $alert['classAlert'] = 'info';
             break;
@@ -36,10 +36,16 @@ function choixAlert($message, $nbP = 0)
         case 'url_non_valide' :
             $alert['messageAlert'] = TEXTE_PAGE_404;
             break;
-        case 'photos_selection':
+        case 'photos_selection' :
             $alert['messageAlert'] = $nbP.PHOTOS_SELECTION;
             $alert['classAlert'] = 'info';
             break;
+        case 'SuppressionOK' :
+            $alert['messageAlert'] = SUPPR_OK;
+            $alert['classAlert'] = 'info';
+            break;
+        case 'SupprError' :
+            $alert['messageAlert'] = SUPPR_ERR;
         default :
             $alert['messageAlert'] = MESSAGE_ERREUR;
     }

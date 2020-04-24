@@ -6,16 +6,11 @@ require_once(PATH_ENTITY.'photo.php');
 
 class CategorieDAO extends DAO
 {
-
-
-    public function getAll()
-    {
+    public function getAll() {
         $res=$this->queryAll('SELECT * FROM Categorie');
         $cat = array();
-        if($res)
-        {
-            foreach($res as $value)
-            {
+        if($res) {
+            foreach($res as $value) {
                 array_push($cat,new Categorie($value['catId'], $value['nomCat']));
             }
             return $cat;
@@ -23,8 +18,6 @@ class CategorieDAO extends DAO
         else return null;
     }
 
-    #utiliser le getById pour verifier si la categorie existe deja pour ajouter cat
-    #si getById null alors on peut ajouter si non la cat existe deja
     public function getById($nomCat)
     {
         if($nomCat == 'Toutes les photos'){
@@ -48,24 +41,26 @@ class CategorieDAO extends DAO
     {
         $res = $this->queryRow('SELECT nomCat FROM Categorie WHERE catId = ?', array($catId));
         if($res)
-        {
             return $res['nomCat'];
-        }
         else return null;
     }
 
-    public function insertCat($nomCat)
-    {
+    public function insertCat($nomCat) {
         $res = $this->queryBdd('INSERT INTO Categorie(nomCat) VALUES(?)',array($nomCat));
         return $res;
     }
 
-    public function getCatID($nomCat) {
+    public function getCatId($nomCat) {
         $res = $this->queryRow('SELECT catId FROM Categorie WHERE nomCat = ?', array($nomCat));
         if($res)
-        {
             return $res['catId'];
-        }
         else return null;
+    }
+
+    public function checkCat($NomCat) {
+        $res=$this->queryRow('SELECT * FROM Categorie WHERE NomCat = ?', array($NomCat));
+        if($res)
+            return true;
+        else return false;
     }
 }

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once(PATH_MODELS.'categorieDAO.php');
 require_once(PATH_MODELS.'photoDAO.php');
 
@@ -54,7 +53,7 @@ if(isset($_FILES['CHOIX_FICH']) && isset($_POST['CHOIX_CAT']) && isset($_POST['D
     }
 
     if($uploadOk == 1) {
-        $catId = $catDAO->getCatID(htmlspecialchars($_POST['CHOIX_CAT']));
+        $catId = $catDAO->getCatId(htmlspecialchars($_POST['CHOIX_CAT']));
         $photo = $photoDAO->insertPhoto($catId,htmlspecialchars($_POST['DESCRIPTION']),$_SESSION['utilID']);
 
         if(!$photo)

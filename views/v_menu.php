@@ -24,14 +24,41 @@
         </li>
 
         <?php
-        if(isset($_SESSION['logged'])) {
-            echo "<li";
-            echo($page == 'index' ? 'class="active"' : '');
-            echo ">";
-            echo "<a href='index.php?page=ajout_photo' style='font-size: 120%'>";
-            echo AJOUT_PHOTO;
-            echo "</a></li>";
-        }?>
+        if(isset($_SESSION['logged']) && $_GET['page'] != 'ajout_photo' && $_GET['page'] != 'image') { ?>
+            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+                <a href="index.php?page=ajout_photo" style="font-size: 120%">
+                    <?= AJOUT_PHOTO ?>
+                </a>
+            </li>
+            <?php
+        } ?>
+
+        <?php
+        if($_SESSION['perm'] == 0 && $_GET['page'] != 'ajout_cat' && $_GET['page'] != 'image') { ?>
+            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+                <a href="index.php?page=ajout_cat" style="font-size: 120%">
+                    <?= AJOUT_CAT ?>
+                </a>
+            </li>
+            <?php
+        } ?>
+
+        <?php
+        if($_GET['page'] == 'image') { ?>
+            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+                <a href="index.php?page=supprimer&id=<?=$_GET['id']?>" style="font-size: 120%">
+                    <?= SUPPRIMER ?>
+                </a>
+            </li>
+
+            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+                <a href="index.php?page=modifier&id=<?=$_GET['id']?>" style="font-size: 120%">
+                    <?= MODIFIER ?>
+                </a>
+            </li>
+            <?php
+        } ?>
+
     </ul>
 
       <!-- Catégorie ajoutée à droite -->
@@ -47,19 +74,11 @@
           <?php
           }
           else {?>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 120%">
-                    <?php echo $_SESSION['pseudo'];?>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href ='index.php?page=accueil' >mon compte</a>
-                    <a class="dropdown-item" href ='index.php?page=accueil' >mes photos</a>
-                    <?php if($_SESSION['perm']==0){
-                        echo "<a class='dropdown-item' href ='index.php?page=accueil' >Panel Admin</a>";
-                    }?>
-                  </div>
-          </li>
-          <?php
+          <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
+              <a href="index.php?page=compte" style="font-size: 120%">
+                  <?=$_SESSION['pseudo'];?>
+              </a>
+              <?php
           }?>
 
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>

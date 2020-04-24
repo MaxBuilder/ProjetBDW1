@@ -4,6 +4,9 @@
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
     <!--  Début de la page -->
+    <?php
+    if(!isset($_SESSION['logged'])) {
+    ?>
     <h1><?=TITRE_CONNECTION?></h1>
     <br>
     <form method="post">
@@ -24,10 +27,12 @@
         </div>
         <br>
         <div >
-            <input class="validerbutton" type="submit" value="<?=ADD?>">
+            <input class="validerbutton" type="submit" value="<?=LOGIN?>">
         </div>
         <a href="index.php?page=inscription"> Pas encore inscrit ? </a>
     </form>
+    <?php }
+    ?>
     <!--  Fin de la page -->
 
     <!--  Pied de page -->

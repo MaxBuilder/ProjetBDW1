@@ -32,7 +32,7 @@
         </div>
         <br>
         <div >
-            <input class="validerbutton" type="submit" value="<?=ADD?>">
+            <input class="validerbutton" type="submit" value="<?=REGISTER?>">
         </div>
         <a href="index.php?page=connexion"> Déjà inscrit ? </a>
     <!--

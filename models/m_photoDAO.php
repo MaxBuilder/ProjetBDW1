@@ -10,10 +10,8 @@ class PhotoDAO extends DAO {
     {
         $res=$this->queryAll('SELECT * FROM Photo');
         $photo = array();
-        if($res)
-        {
-            foreach($res as $value)
-            {
+        if($res) {
+            foreach($res as $value) {
                 array_push($photo,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId']));
             }
             return $photo;
@@ -21,24 +19,17 @@ class PhotoDAO extends DAO {
         else return null;
     }
 
-    public function getImage($photoId)
-    {
-        $res = $this->queryAll('SELECT * FROM Photo WHERE photoId = ?', array($photoId));
-        $photo = array();
-        if($res)
-        {
-            foreach($res as $value)
-            {
-                array_push($photo,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId']));
-            }
+    public function getImage($photoId) {
+        $res = $this->queryRow('SELECT * FROM Photo WHERE photoId = ?', array($photoId));
+        if($res) {
+            $photo = new Photo($res['photoId'], $res['nomFich'], $res['description'], $res['catId']);
             return $photo;
         }
         else return null;
     }
 
-    public function insertPhoto($photoCatId,$photoDesc,$utilID)
-    {
-        $res = $this->queryBdd('INSERT INTO Photo(description,catId,utilID) values (?,?,?)',array($photoDesc,$photoCatId,$utilID));
+    public function insertPhoto($photoCatId,$photoDesc,$utilID) {
+        $res = $this->queryBdd('INSERT INTO Photo(description,catId,utilID) values (?,?,?)', array($photoDesc,$photoCatId,$utilID));
         if($res) {
             $nomFich = 'DSC'. $this->insertId() . strtolower(strrchr($_FILES['CHOIX_FICH']['name'], '.'));
             move_uploaded_file($_FILES['CHOIX_FICH']['tmp_name'], PATH_IMAGES.$nomFich);
@@ -51,14 +42,22 @@ class PhotoDAO extends DAO {
         return $res;
     }
 
-    public function getPhotoByNomFich($nomFich)
-    {
-        $res = $this->queryRow('SELECT * FROM Photo WHERE nomFich = ?',array($nomFich));
-        if($res)
-        {
+    public function getPhotoByNomFich($nomFich) {
+        $res = $this->queryRow('SELECT * FROM Photo WHERE nomFich = ?', array($nomFich));
+        if($res) {
             $photo = new Photo($res['photoId'], $res['nomFich'], $res['description'], $res['catId']);
             return $photo;
         }
         else return $res;
+    }
+
+    public function deletePhoto($id) {
+        $res = $this->queryBdd('DELETE FROM Photo WHERE photoId = ?', array($id));
+        return $res;
+    }
+
+    public function updatePhoto($id, $newDescri, $newCat) {
+        $res = $this->queryBdd('UPDATE Photo SET description = ?, catId = ? WHERE photoId = ?', array($newDescri, $newCat, $id));
+        return $res;
     }
 }
