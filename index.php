@@ -13,7 +13,7 @@ require_once('./config/configuration.php');
 require_once('./lib/foncBase.php');
 require_once(PATH_TEXTES.LANG.'.php');
 
-session_start();
+if(session_status() != PHP_SESSION_ACTIVE){session_start();}
 
 if(isset($_GET['page']))
 {

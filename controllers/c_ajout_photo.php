@@ -1,4 +1,5 @@
 <?php
+if(!isset($_SESSION['logged'])){header('location:index.php?page=accueil');}
 require_once(PATH_MODELS.'categorieDAO.php');
 require_once(PATH_MODELS.'photoDAO.php');
 

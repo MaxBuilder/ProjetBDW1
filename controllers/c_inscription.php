@@ -1,8 +1,6 @@
 <?php
 require_once PATH_MODELS.'utilisateurDAO.php';
 
-session_start();
-
 if (isset($_POST['CHOIX_MDP'])) {
     $connexion = new UtilisateurDAO(DEBUG);
 
