@@ -27,7 +27,7 @@
         </div>
         <br>
         <div >
-            <input class="validerbutton" type="submit" value="<?=LOGIN?>">
+            <input class="validerbutton" style="width: 120px" type="submit" value="<?=LOGIN?>">
         </div>
         <a href="index.php?page=inscription"> Pas encore inscrit ? </a>
     </form>

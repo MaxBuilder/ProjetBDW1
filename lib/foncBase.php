@@ -21,6 +21,10 @@ function choixAlert($message, $nbP = 0)
             $alert['messageAlert'] = MESSAGE_CONNECT;
             $alert['classAlert'] = 'info';
             break;
+        case 'Deconnecter' :
+            $alert['messageAlert'] = MESSAGE_DISCONNECT;
+            $alert['classAlert'] = 'info';
+            break;
         case 'pseudo_dispo' :
             $alert['messageAlert'] = ERREUR_PSEUDO_AVAIL;
             break;

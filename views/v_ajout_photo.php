@@ -22,7 +22,7 @@
                 <?=DESCRIPTION?>
             </label>
             <br>
-            <textarea style="color:#181818;" type="text" name="DESCRIPTION" rows="4" cols="40"></textarea>
+            <textarea style="color:#181818;" type="text" name="DESCRIPTION" placeholder="Description" rows="4" cols="40"></textarea>
         </div>
         <br>
         <div>
@@ -39,9 +39,9 @@
                         echo $_POST['categorie'];
                     else echo $value->getnomCat();?>"
                         <?php
-                        if(isset($_POST['choix_categorie']) && ($_POST['choix_categorie'] == $value->getnomCat()))
+                        if(isset($_POST['choix_categorie']) && ($_POST['choix_categorie'] == $value->getNomCat()))
                             echo'selected';?>>
-                        <?=$value->getnomCat()?>
+                        <?=$value->getNomCat()?>
                     </option>
                     <?php
                 }

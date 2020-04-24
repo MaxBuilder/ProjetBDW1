@@ -19,6 +19,7 @@ define('REGISTER','S\'inscrire');
 
 // Erreurs
 define('MESSAGE_CONNECT','Connection réussie !');
+define('MESSAGE_DISCONNECT','Déconnexion réussie !');
 define('ERREUR_MDP','Vérification et mot de passe différents.');
 define('ERREUR_IDENTIFIANT','Identifant ou mot de passe inconnu.');
 define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
@@ -34,6 +35,8 @@ define('ERREUR_PSEUDO_AVAIL','Le pseudo existe déja.');
 define('TITRE_PAGE_DETAIL','Détails de la  photo');
 define('TITRE_CONNECTION','Connexion à votre compte');
 define('TITRE_INSCRIPTION','Création d\'un compte');
+define('TITRE_PHOTO_PERSO','Espace personnel');
+define('TITRE_ADMIN','Espace Admin');
 define('CHOIX_PSEUDO','Entrez votre pseudo : ');
 define('CHOIX_MDP','Entrez votre mot de passe : ');
 define('CHOIX_PSEUDO_INSCRI','Pseudo :');
@@ -53,6 +56,9 @@ define('SUPPR_ERR','Erreur lors de la suppression.');
 define('SUPPRIMER','Supprimer');
 define('MODIFIER','Modifier');
 define('TITRE_MODIF_PHOTO','Modifier la photo');
+define('TXT_INFO_USER','Nombre d\'utilisateurs enregistrés : ');
+define('TITRE_INFO_USER','Informations sur les utilisateurs');
+define('TITRE_INFO_CAT','Informations sur les catégories d\'image');
 
 // Boutons
 define('SUBMIT','Valider');

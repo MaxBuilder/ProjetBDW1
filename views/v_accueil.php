@@ -41,7 +41,7 @@
 // Affichage des images
 foreach ($catById as $value)
 {?>
-    <a href="index.php?page=image&id=<?=$value->getphotoId()?>"><img src="<?=PATH_IMAGES.$value->getnomFich()?>"></a>
+    <a href="index.php?page=image&id=<?=$value->getPhotoId()?>&user=<?=$value->getUserId()?>"><img src="<?=PATH_IMAGES.$value->getNomFich()?>"></a>
     <?php
 }?>
 

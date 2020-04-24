@@ -12,9 +12,22 @@ class PhotoDAO extends DAO {
         $photo = array();
         if($res) {
             foreach($res as $value) {
-                array_push($photo,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId']));
+                array_push($photo,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId'], $value['utilID']));
             }
             return $photo;
+        }
+        else return null;
+    }
+
+    public function getByUser($userId)
+    {
+        $res=$this->queryAll('SELECT * FROM Photo WHERE UtilID = ?', array($userId));
+        $photos = array();
+        if($res) {
+            foreach($res as $value) {
+                array_push($photos,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId'], $value['utilID']));
+            }
+            return $photos;
         }
         else return null;
     }
@@ -22,7 +35,7 @@ class PhotoDAO extends DAO {
     public function getImage($photoId) {
         $res = $this->queryRow('SELECT * FROM Photo WHERE photoId = ?', array($photoId));
         if($res) {
-            $photo = new Photo($res['photoId'], $res['nomFich'], $res['description'], $res['catId']);
+            $photo = new Photo($res['photoId'], $res['nomFich'], $res['description'], $res['catId'], $res['utilID']);
             return $photo;
         }
         else return null;
@@ -45,7 +58,7 @@ class PhotoDAO extends DAO {
     public function getPhotoByNomFich($nomFich) {
         $res = $this->queryRow('SELECT * FROM Photo WHERE nomFich = ?', array($nomFich));
         if($res) {
-            $photo = new Photo($res['photoId'], $res['nomFich'], $res['description'], $res['catId']);
+            $photo = new Photo($res['photoId'], $res['nomFich'], $res['description'], $res['catId'], $res['utilID']);
             return $photo;
         }
         else return $res;
@@ -59,5 +72,10 @@ class PhotoDAO extends DAO {
     public function updatePhoto($id, $newDescri, $newCat) {
         $res = $this->queryBdd('UPDATE Photo SET description = ?, catId = ? WHERE photoId = ?', array($newDescri, $newCat, $id));
         return $res;
+    }
+
+    public function countCat($catId) {
+        $res = $this->queryRow('SELECT COUNT(*) AS nb FROM Photo WHERE catId = ?', array($catId));
+        return $res['nb'];
     }
 }

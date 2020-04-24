@@ -14,16 +14,14 @@ class UtilisateurDAO extends DAO {
         }
     }
 
-    public function register($pseudo, $hashPwd)
-    {
+    public function register($pseudo, $hashPwd) {
         $query = "INSERT INTO `Utilisateur` (`pseudo`,`mdp`,`permission`) VALUES('$pseudo', '$hashPwd','1');";
         $this->queryBdd($query);
     }
 
-    public function getUser($pseudo, $hashPwd)
-    {
+    public function getUser($pseudo, $hashPwd) {
         $query = "SELECT pseudo,mdp FROM utilisateur WHERE pseudo ='$pseudo' AND mdp ='$hashPwd'; ";
-        $res = $this->queryAll($query);
+        $res = $this->queryRow($query);
         if (empty($res)){
             return FALSE;
         } else {
@@ -31,22 +29,27 @@ class UtilisateurDAO extends DAO {
         }
     }
 
-    public function getID($pseudo)
-    {
+    public function getID($pseudo) {
         $query = "SELECT utilID FROM utilisateur WHERE pseudo ='$pseudo'; ";
-        $res = $this->queryAll($query);
+        $res = $this->queryRow($query);
         if (empty($res)){
             return 666;
         }
         return $res[0]['utilID'];
     }
-    public function getPerm($pseudo){
+
+    public function getPerm($pseudo) {
         $query = "SELECT permission FROM utilisateur WHERE pseudo ='$pseudo'; ";
-        $res = $this->queryAll($query);
+        $res = $this->queryRow($query);
         if (empty($res)){
             return 1;
         }
         return $res[0]['permission'];
+    }
+
+    public function countUsers() {
+        $res = $this->queryRow('SELECT COUNT(*) AS nb FROM Utilisateur');
+        return $res['nb'];
     }
 }
 

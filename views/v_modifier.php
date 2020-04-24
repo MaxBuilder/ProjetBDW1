@@ -14,7 +14,7 @@
                 <?=DESCRIPTION?>
             </label>
             <br>
-            <textarea style="color:#181818;" type="text" name="DESCRIPTION" rows="4" cols="40"></textarea>
+            <textarea style="color:#181818;" type="text" name="DESCRIPTION" placeholder="Description" rows="4" cols="40"><?=$desc?></textarea>
         </div>
         <br>
         <div>
@@ -27,17 +27,14 @@
                 foreach ($cat as $value)
                 { ?>
                     <option name="Categorie" value="<?php
-                    if(isset($_POST['categorie']))
-                        echo $_POST['categorie'];
-                    else echo $value->getnomCat();?>"
-                        <?php
-                        if(isset($_POST['choix_categorie']) && ($_POST['choix_categorie'] == $value->getnomCat()))
-                            echo'selected';?>>
-                        <?=$value->getnomCat()?>
+                    echo $value->getNomCat();?>"
+                        <?php if($value->getCatId() == $selec)
+                        echo'selected';?>>
+                        <?=$value->getNomCat()?>
                     </option>
                     <?php
                 }
-                echo $_POST['choix_categorie']; ?>
+                ?>
             </select>
         </div>
         <br>

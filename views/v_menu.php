@@ -44,7 +44,7 @@
         } ?>
 
         <?php
-        if($_GET['page'] == 'image') { ?>
+        if($_GET['page'] == 'image' && (($_GET['user'] == $_SESSION['utilID']) || $_SESSION['perm'] == 0)) { ?>
             <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
                 <a href="index.php?page=modifier&id=<?=$_GET['id']?>" style="font-size: 120%">
                     <?= MODIFIER ?>
@@ -75,7 +75,7 @@
           }
           else {?>
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
-              <a href="index.php?page=compte" style="font-size: 120%">
+              <a href="index.php?page=espace_compte" style="font-size: 120%">
                   <?=$_SESSION['pseudo'];?>
               </a>
               <?php

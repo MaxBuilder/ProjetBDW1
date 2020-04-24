@@ -2,13 +2,14 @@
 require_once PATH_MODELS.'utilisateurDAO.php';
 
 $connexion = new UtilisateurDAO(DEBUG);
-if (isset($_SESSION["logged"])){
+if (isset($_SESSION["logged"])) {
     session_destroy();
     $_SESSION = array();
     $_SESSION = array();
-    header('location:index.php?page=accueil');
-
-}else if(isset($_POST['CHOIX_MDP']) && isset($_POST['CHOIX_PSEUDO'])) {
+    //header('location:index.php?page=accueil');
+    $alert = choixAlert('Deconnecter');
+}
+else if(isset($_POST['CHOIX_MDP']) && isset($_POST['CHOIX_PSEUDO'])) {
     $mdpHash = md5($_POST['CHOIX_MDP']);
 
     if($connexion->getUser($_POST['CHOIX_PSEUDO'],$mdpHash)) {
@@ -16,7 +17,7 @@ if (isset($_SESSION["logged"])){
         $_SESSION['pseudo'] = $_POST['CHOIX_PSEUDO'];
         $_SESSION['logged'] = TRUE;
         $_SESSION['perm'] = $connexion->getPerm($_POST['CHOIX_PSEUDO']);
-        $_SESSION['on'] = TRUE;
+        //$_SESSION['on'] = TRUE;
         $alert = choixAlert('Connecter');
     }
     else $alert = choixAlert('Identif');

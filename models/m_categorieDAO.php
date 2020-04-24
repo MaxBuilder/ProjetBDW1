@@ -23,14 +23,14 @@ class CategorieDAO extends DAO
         if($nomCat == 'Toutes les photos'){
             $res=$this->queryAll('SELECT * FROM Photo');
         }else{
-            $res=$this->queryAll('SELECT * FROM Photo WHERE catId in (select catId FROM Categorie WHERE nomCat = ?)', array($nomCat));
+            $res=$this->queryAll('SELECT * FROM Photo WHERE catId in (SELECT catId FROM Categorie WHERE nomCat = ?)', array($nomCat));
         }
         $catArr = array();
         if($res)
         {
             foreach($res as $value)
             {
-                array_push($catArr,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId']));
+                array_push($catArr,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId'], $value['utilID']));
             }
             return $catArr;
         }

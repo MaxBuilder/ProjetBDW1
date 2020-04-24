@@ -15,6 +15,8 @@ if(is_null($cat))
 }
 
 $photo = $photoDAO->getImage($_GET['id']);
+$desc = $photo->getDescription();
+$selec = $photo->getCatId();
 
 if(isset($_POST['CHOIX_CAT']) && isset($_POST['DESCRIPTION'])) {
     if($_POST['CHOIX_CAT'] == "NONE") $alert = choixAlert('choix_de_cat');
