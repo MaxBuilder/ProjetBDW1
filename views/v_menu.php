@@ -52,10 +52,10 @@
                     <?php echo $_SESSION['pseudo'];?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href ='index.php?page=accueil' >mon compte</a>
-                    <a class="dropdown-item" href ='index.php?page=accueil' >mes photos</a>
+                    <a class="dropdown-item" href ='index.php?page=accueil' style="font-size: 120%" >mon compte<br></a>
+                    <a class="dropdown-item" href ='index.php?page=accueil'  style="font-size: 120%">mes photos</a>
                     <?php if($_SESSION['perm']==0){
-                        echo "<a class='dropdown-item' href ='index.php?page=accueil' >Panel Admin</a>";
+                        echo "<a class='dropdown-item' href ='index.php?page=accueil' style='font-size: 120%' ><br>Panel Admin</a>";
                     }?>
                   </div>
           </li>
