@@ -23,7 +23,8 @@
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>jquery-3.1.1.js"></script>
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>jquery.validate.min.js"></script>
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>monjs.js"></script>
-	</head>
+
+    </head>
 	<body>
 		<!-- En-tête -->
 		<header class="header" >
@@ -32,7 +33,7 @@
 					<div class = "col-md-1 col-sm-2 col-xs-12">
 						<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="64" width="64 " class="img-circle">
 					</div>
-					<div class="col-md-8 col-sm-4 col-xs-12">
+					<div class="col-md-8 col-sm-10 col-xs-12">
 						<h2><?= TITRE ?></h2>
 					</div>
 				</div>

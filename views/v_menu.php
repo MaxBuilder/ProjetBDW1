@@ -34,7 +34,7 @@
         } ?>
 
         <?php
-        if($_SESSION['perm'] == 0 && $_GET['page'] != 'ajout_cat' && $_GET['page'] != 'image') { ?>
+        if($_SESSION['perm'] == 0 && $_SESSION['logged'] == TRUE && $_GET['page'] != 'ajout_cat' && $_GET['page'] != 'image') { ?>
             <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
                 <a href="index.php?page=ajout_cat" style="font-size: 120%">
                     <?= AJOUT_CAT ?>
@@ -50,7 +50,7 @@
                     <?= MODIFIER ?>
                 </a>
             </li>
-            
+
             <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
                 <a href="index.php?page=supprimer&id=<?=$_GET['id']?>" style="font-size: 120%">
                     <?= SUPPRIMER ?>
