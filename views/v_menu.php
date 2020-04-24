@@ -46,14 +46,14 @@
         <?php
         if($_GET['page'] == 'image') { ?>
             <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
-                <a href="index.php?page=supprimer&id=<?=$_GET['id']?>" style="font-size: 120%">
-                    <?= SUPPRIMER ?>
-                </a>
-            </li>
-
-            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
                 <a href="index.php?page=modifier&id=<?=$_GET['id']?>" style="font-size: 120%">
                     <?= MODIFIER ?>
+                </a>
+            </li>
+            
+            <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+                <a href="index.php?page=supprimer&id=<?=$_GET['id']?>" style="font-size: 120%">
+                    <?= SUPPRIMER ?>
                 </a>
             </li>
             <?php
