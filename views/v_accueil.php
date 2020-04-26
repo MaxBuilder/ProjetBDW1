@@ -1,24 +1,13 @@
-<?php
-/*
- * DS PHP
- * Vue page index - page d'accueil
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- *
- */
-//  En tête de page -->
-?>
+<!-- Entête de page -->
 <?php require_once(PATH_VIEWS.'header.php');?>
 
-<!--  Zone message d'alerte -->
+<!-- Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
-<!--  Début de la page -->
-<h1><?php  echo TITRE_PAGE_ACCUEIL;?></h1>
+    <!-- Début de la page -->
+    <h1><?php  echo TITRE_PAGE_ACCUEIL;?></h1>
 
     <!--  Début formulaire -->
-
     <form action="" method="get">
         <label>Quelles photos souhaitez-vous afficher ?
             <select style="color:#181818" name="choix_categorie" value="choix_categorie">
@@ -36,20 +25,14 @@
         </label>
     </form>
 
-<?php
-
-// Affichage des images
-foreach ($catById as $value)
-{?>
+    <?php foreach ($photoById as $value)
+    {?>
     <a href="index.php?page=image&id=<?=$value->getPhotoId()?>&user=<?=$value->getUserId()?>"><img src="<?=PATH_IMAGES.$value->getNomFich()?>"></a>
     <?php
-}?>
-
+    }?>
     <!--  Fin formulaire -->
 
-
-
-<!--  Fin de la page -->
+    <!--  Fin de la page -->
 
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');

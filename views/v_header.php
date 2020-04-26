@@ -1,14 +1,3 @@
-<?php
-/*
- * DS PHP
- * Vue Entete HTML du site
- *
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- *
- */
-?>
 <!DOCTYPE html>
 <html>
 	<head>

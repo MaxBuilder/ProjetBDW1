@@ -1,5 +1,6 @@
 <?php
 
+// Gestion des alertes
 function choixAlert($message, $nbP = 0)
 {
     $alert = array();
@@ -10,6 +11,9 @@ function choixAlert($message, $nbP = 0)
             break;
         case 'FICHIER' :
             $alert['messageAlert'] = ERREUR_FICHIER;
+            break;
+        case 'desc' :
+            $alert['messageAlert'] = ERREUR_DESCRI;
             break;
         case 'choix_de_cat' :
             $alert['messageAlert'] = ERREUR_CHOIX_CAT;

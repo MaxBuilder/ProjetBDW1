@@ -1,14 +1,9 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 require_once(PATH_MODELS.'categorieDAO.php');
 require_once(PATH_MODELS.'photoDAO.php');
 
+
+// Début contrôleur supprimer
 $photoDAO = new photoDAO(DEBUG);
 
 if(isset($_GET['id']))
@@ -22,8 +17,12 @@ if($photo && $bool)
     $alert = choixAlert('SuppressionOK');
 else $alert = choixAlert('SupprError');
 
-
-
+if(isset($_GET['message']))
+{
+    $message = htmlspecialchars($_GET['message']);
+    $alert = choixAlert($message);
+}
+// Fin contrôleur supprimer
 
 
 require_once(PATH_VIEWS.$page.'.php');

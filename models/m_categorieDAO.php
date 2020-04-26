@@ -4,8 +4,7 @@ require_once(PATH_MODELS.'connexion.php');
 require_once(PATH_ENTITY.'categorie.php');
 require_once(PATH_ENTITY.'photo.php');
 
-class CategorieDAO extends DAO
-{
+class CategorieDAO extends DAO {
     public function getAll() {
         $res=$this->queryAll('SELECT * FROM Categorie');
         $cat = array();
@@ -18,27 +17,7 @@ class CategorieDAO extends DAO
         else return null;
     }
 
-    public function getById($nomCat)
-    {
-        if($nomCat == 'Toutes les photos'){
-            $res=$this->queryAll('SELECT * FROM Photo');
-        }else{
-            $res=$this->queryAll('SELECT * FROM Photo WHERE catId in (SELECT catId FROM Categorie WHERE nomCat = ?)', array($nomCat));
-        }
-        $catArr = array();
-        if($res)
-        {
-            foreach($res as $value)
-            {
-                array_push($catArr,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId'], $value['utilID']));
-            }
-            return $catArr;
-        }
-        else return null;
-    }
-
-    public function getNomCat($catId)
-    {
+    public function getNomCat($catId) {
         $res = $this->queryRow('SELECT nomCat FROM Categorie WHERE catId = ?', array($catId));
         if($res)
             return $res['nomCat'];

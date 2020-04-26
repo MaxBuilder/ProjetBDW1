@@ -15,17 +15,15 @@ require_once(PATH_TEXTES.LANG.'.php');
 
 if(session_status() != PHP_SESSION_ACTIVE){session_start();}
 
-if(isset($_GET['page']))
-{
+if(isset($_GET['page'])) {
   $page = htmlspecialchars($_GET['page']); // http://.../index.php?page=toto
   if(!is_file(PATH_CONTROLLERS.$_GET['page'].".php"))
-  {
     $page = '404'; //page demandée inexistante
-  }
 }
-else{
+else {
 	$page='accueil';
-    $_GET['page'] = 'accueil';} //page d'accueil du site - http://.../index.php
+    $_GET['page'] = 'accueil';
+}
 
-//appel du controller
+// Appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');

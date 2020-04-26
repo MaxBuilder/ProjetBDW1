@@ -1,13 +1,15 @@
 <?php
 require_once PATH_MODELS.'utilisateurDAO.php';
 
-if (isset($_POST['CHOIX_MDP'])) {
+
+// Début contrôleur inscription
+if(isset($_POST['CHOIX_MDP'])) {
     $connexion = new UtilisateurDAO(DEBUG);
 
-    if ($_POST['CHOIX_MDP'] == $_POST['CHOIX_MDPC']) {
+    if($_POST['CHOIX_MDP'] == $_POST['CHOIX_MDPC']) {
         $rep = $connexion->checkAvailability($_POST['CHOIX_PSEUDO']);
 
-        if ($rep) {
+        if($rep) {
             $mdpHash = md5($_POST['CHOIX_MDP']);
             $connexion->register($_POST['CHOIX_PSEUDO'], $mdpHash);
 
@@ -19,6 +21,12 @@ if (isset($_POST['CHOIX_MDP'])) {
     else $alert = choixAlert('MDP');
 }
 
-require_once(PATH_VIEWS.$page.'.php');
+if(isset($_GET['message']))
+{
+    $message = htmlspecialchars($_GET['message']);
+    $alert = choixAlert($message);
+}
+// Fin contrôleur inscription
 
-?>
+
+require_once(PATH_VIEWS.$page.'.php');

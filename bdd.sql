@@ -1,27 +1,148 @@
-CREATE TABLE IF NOT EXISTS `Categorie` (
-	`catId` INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	`nomCat`	VARCHAR (100)
-);
-CREATE TABLE IF NOT EXISTS `Utilisateur` (
-	`utilID` INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	`pseudo`	VARCHAR (100),
-	`mdp` VARCHAR(100),
-	`permission` INTEGER
-);
-CREATE TABLE IF NOT EXISTS `Photo` (
-	`photoId`	INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	`nomFich`	VARCHAR (100),
-	`description`	VARCHAR (250),
-	`catId`	INTEGER,
-	`utilID` INTEGER,
-	FOREIGN KEY(`utilID`) REFERENCES `utilisateur`(`utilID`),
-	FOREIGN KEY(`catId`) REFERENCES `Categorie`(`catId`)
-);
+-- phpMyAdmin SQL Dump
+-- version 4.9.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Generation Time: Apr 26, 2020 at 08:18 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
-INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES ('1', 'Animal');
-INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES ('2', 'Nourriture');
-INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES ('3', 'Gens');
-INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES ('4', 'Monument');
-INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES ('5', 'Paysage');
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-INSERT INTO `utilisateur` (utilID,pseudo,mdp,permisison) VALUES ('1','admin','21232f297a57a5a743894a0e4a801fc3','0');
+--
+-- Database: `bdd`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Categorie`
+--
+
+CREATE TABLE `Categorie` (
+  `catId` int(11) NOT NULL,
+  `nomCat` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Categorie`
+--
+
+INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES
+(1, 'Animal'),
+(2, 'Nourriture'),
+(3, 'Gens'),
+(4, 'Monument'),
+(5, 'Paysage'),
+(6, 'Test'),
+(7, 'Pkmn');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Photo`
+--
+
+CREATE TABLE `Photo` (
+  `photoId` int(11) NOT NULL,
+  `nomFich` varchar(100) DEFAULT NULL,
+  `description` varchar(250) DEFAULT NULL,
+  `catId` int(11) DEFAULT NULL,
+  `utilID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Photo`
+--
+
+INSERT INTO `Photo` (`photoId`, `nomFich`, `description`, `catId`, `utilID`) VALUES
+(3, 'DSC3.jpg', 'Un clebs (petit) ouais', 1, 2),
+(4, 'DSC4.jpg', 'Un monument ??', 4, 2),
+(5, 'DSC5.jpg', 'Un gros canard', 1, 3),
+(6, 'DSC6.jpg', 'L\'Elysée (c bo)', 4, 3),
+(7, 'DSC7.jpg', 'Une chèvre lol', 1, 3),
+(8, 'DSC8.jpg', 'Un paysage bucolique', 5, 3),
+(10, 'DSC10.jpg', 'La Tour Eiffel (vu de dessous)\r\n', 4, 1),
+(16, 'DSC16.jpg', 'Un perroquet ', 1, 2),
+(17, 'DSC17.jpg', 'A manger', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Utilisateur`
+--
+
+CREATE TABLE `Utilisateur` (
+  `utilID` int(11) NOT NULL,
+  `pseudo` varchar(100) DEFAULT NULL,
+  `mdp` varchar(100) DEFAULT NULL,
+  `permission` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Utilisateur`
+--
+
+INSERT INTO `Utilisateur` (`utilID`, `pseudo`, `mdp`, `permission`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
+(2, 'raphi', '81dc9bdb52d04dc20036dbd8313ed055', 1),
+(3, 'tibo', '81dc9bdb52d04dc20036dbd8313ed055', 1),
+(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Categorie`
+--
+ALTER TABLE `Categorie`
+  ADD PRIMARY KEY (`catId`);
+
+--
+-- Indexes for table `Photo`
+--
+ALTER TABLE `Photo`
+  ADD PRIMARY KEY (`photoId`),
+  ADD KEY `utilID` (`utilID`),
+  ADD KEY `catId` (`catId`);
+
+--
+-- Indexes for table `Utilisateur`
+--
+ALTER TABLE `Utilisateur`
+  ADD PRIMARY KEY (`utilID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Categorie`
+--
+ALTER TABLE `Categorie`
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `Photo`
+--
+ALTER TABLE `Photo`
+  MODIFY `photoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `Utilisateur`
+--
+ALTER TABLE `Utilisateur`
+  MODIFY `utilID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Photo`
+--
+ALTER TABLE `Photo`
+  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`utilID`) REFERENCES `utilisateur` (`utilID`),
+  ADD CONSTRAINT `photo_ibfk_2` FOREIGN KEY (`catId`) REFERENCES `Categorie` (`catId`);

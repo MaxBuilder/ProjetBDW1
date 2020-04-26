@@ -5,22 +5,22 @@ require_once(PATH_ENTITY.'categorie.php');
 require_once(PATH_ENTITY.'photo.php');
 
 class PhotoDAO extends DAO {
-
-    public function getAll()
-    {
-        $res=$this->queryAll('SELECT * FROM Photo');
-        $photo = array();
+    public function getById($nomCat) {
+        if($nomCat == 'Toutes les photos')
+            $res=$this->queryAll('SELECT * FROM Photo');
+        else
+            $res=$this->queryAll('SELECT * FROM Photo WHERE catId in (SELECT catId FROM Categorie WHERE nomCat = ?)', array($nomCat));
+        $catArr = array();
         if($res) {
             foreach($res as $value) {
-                array_push($photo,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId'], $value['utilID']));
+                array_push($catArr,new Photo($value['photoId'], $value['nomFich'], $value['description'], $value['catId'], $value['utilID']));
             }
-            return $photo;
+            return $catArr;
         }
         else return null;
     }
 
-    public function getByUser($userId)
-    {
+    public function getByUser($userId) {
         $res=$this->queryAll('SELECT * FROM Photo WHERE UtilID = ?', array($userId));
         $photos = array();
         if($res) {

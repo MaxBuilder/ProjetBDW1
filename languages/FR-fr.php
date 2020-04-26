@@ -1,5 +1,5 @@
 <?php
-//isoler ici dans des constantes les textes affichés sur le site
+// Logo
 define('LOGO', 'Logo de la compagnie'); // Affiché si image non trouvée
 
 // Textes du menu accueil
@@ -30,6 +30,7 @@ define('ERREUR_FICHIER','L\'extension du fichier n\'est pas correcte.');
 define('ERREUR_TAILLE','La taille du fichier excède la limite de 100 ko.');
 define('ERREUR_CAT_EXIST','La catégorie existe déja.');
 define('ERREUR_PSEUDO_AVAIL','Le pseudo existe déja.');
+define('ERREUR_DESCRI','Veuillez entrer une description.');
 
 // Titres
 define('TITRE_PAGE_DETAIL','Détails de la  photo');

@@ -1,10 +1,8 @@
 <?php
 require_once(PATH_MODELS.'categorieDAO.php');
-if(isset($_GET['nom']))
-{
-    $nom =  htmlspecialchars($_GET['nom']);
-}
 
+
+// Début contrôleur de ajout_cat
 $catDAO = new CategorieDAO(DEBUG);
 
 if(isset($_POST['CHOIX_DE_CAT'])) {
@@ -24,4 +22,7 @@ if(isset($_GET['message']))
     $message = htmlspecialchars($_GET['message']);
     $alert = choixAlert($message);
 }
+// Fin contrôleur de ajout_cat
+
+
 require_once(PATH_VIEWS.$page.'.php');

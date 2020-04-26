@@ -3,22 +3,15 @@ if(!isset($_SESSION['logged'])){header('location:index.php?page=accueil');}
 require_once(PATH_MODELS.'categorieDAO.php');
 require_once(PATH_MODELS.'photoDAO.php');
 
-if(isset($_GET['nom']))
-{
-    $nom =  htmlspecialchars($_GET['nom']);
-}
 
+// Début contrôleur ajout_photo
 $photoDAO = new PhotoDAO(DEBUG);
 $catDAO = new CategorieDAO(DEBUG);
 $cat = $catDAO->getAll();
 
-
-if(is_null($cat))
-{
+if(is_null($cat)) {
     if(!is_null($cat->getErreur()))
-    {
         $erreur = 'query';
-    }
 }
 
 if(isset($_FILES['CHOIX_FICH']) && isset($_POST['CHOIX_CAT']) && isset($_POST['DESCRIPTION'])) {
@@ -36,6 +29,11 @@ if(isset($_FILES['CHOIX_FICH']) && isset($_POST['CHOIX_CAT']) && isset($_POST['D
             echo "File is not an image.";
             $uploadOk = 0;
         }
+    }
+
+    if(strlen($_POST['DESCRIPTION']) == 0) {
+        $alert = choixAlert('desc');
+        $uploadOk = 0;
     }
 
     if ($_FILES["CHOIX_FICH"]["size"] > 100000) {
@@ -58,13 +56,9 @@ if(isset($_FILES['CHOIX_FICH']) && isset($_POST['CHOIX_CAT']) && isset($_POST['D
         $photo = $photoDAO->insertPhoto($catId,htmlspecialchars($_POST['DESCRIPTION']),$_SESSION['utilID']);
 
         if(!$photo)
-        {
             $alert = choixAlert($photoDAO->getErreur());
-        }
-        else {
+        else
             header('Location: index.php?page=image&id='.$photo->getPhotoId());
-            //exit();
-        }
     }
 }
 
@@ -73,4 +67,7 @@ if(isset($_GET['message']))
     $message = htmlspecialchars($_GET['message']);
     $alert = choixAlert($message);
 }
+// Fin contrôleur ajout_photo
+
+
 require_once(PATH_VIEWS.$page.'.php');
