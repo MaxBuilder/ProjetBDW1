@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 26, 2020 at 08:18 PM
+-- Generation Time: Apr 28, 2020 at 09:55 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -36,7 +36,8 @@ INSERT INTO `Categorie` (`catId`, `nomCat`) VALUES
 (4, 'Monument'),
 (5, 'Paysage'),
 (6, 'Test'),
-(7, 'Pkmn');
+(7, 'Pkmn'),
+(8, 'Coucou');
 
 -- --------------------------------------------------------
 
@@ -49,23 +50,24 @@ CREATE TABLE `Photo` (
   `nomFich` varchar(100) DEFAULT NULL,
   `description` varchar(250) DEFAULT NULL,
   `catId` int(11) DEFAULT NULL,
-  `utilID` int(11) DEFAULT NULL
+  `utilID` int(11) DEFAULT NULL,
+  `visibility` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Photo`
 --
 
-INSERT INTO `Photo` (`photoId`, `nomFich`, `description`, `catId`, `utilID`) VALUES
-(3, 'DSC3.jpg', 'Un clebs (petit) ouais', 1, 2),
-(4, 'DSC4.jpg', 'Un monument ??', 4, 2),
-(5, 'DSC5.jpg', 'Un gros canard', 1, 3),
-(6, 'DSC6.jpg', 'L\'Elysée (c bo)', 4, 3),
-(7, 'DSC7.jpg', 'Une chèvre lol', 1, 3),
-(8, 'DSC8.jpg', 'Un paysage bucolique', 5, 3),
-(10, 'DSC10.jpg', 'La Tour Eiffel (vu de dessous)\r\n', 4, 1),
-(16, 'DSC16.jpg', 'Un perroquet ', 1, 2),
-(17, 'DSC17.jpg', 'A manger', 2, 1);
+INSERT INTO `Photo` (`photoId`, `nomFich`, `description`, `catId`, `utilID`, `visibility`) VALUES
+(4, 'DSC4.jpg', 'Un monument ?? oui', 4, 2, 1),
+(5, 'DSC5.jpg', 'Un gros canard', 1, 3, 1),
+(6, 'DSC6.jpg', 'L\'Elysée (c bo)', 4, 3, 1),
+(7, 'DSC7.jpg', 'Une chèvre lol', 1, 3, 1),
+(8, 'DSC8.jpg', 'Un paysage bucolique', 5, 3, 1),
+(10, 'DSC10.jpg', 'La Tour Eiffel (vu de dessous)\r\n', 4, 1, 1),
+(16, 'DSC16.jpg', 'Un perroquet ', 1, 2, 1),
+(17, 'DSC17.jpg', 'A manger', 2, 1, 1),
+(31, 'DSC31.jpg', 'Un clebs', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -87,8 +89,7 @@ CREATE TABLE `Utilisateur` (
 INSERT INTO `Utilisateur` (`utilID`, `pseudo`, `mdp`, `permission`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
 (2, 'raphi', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-(3, 'tibo', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 1);
+(3, 'tibo', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 --
 -- Indexes for dumped tables
@@ -122,19 +123,19 @@ ALTER TABLE `Utilisateur`
 -- AUTO_INCREMENT for table `Categorie`
 --
 ALTER TABLE `Categorie`
-  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `Photo`
 --
 ALTER TABLE `Photo`
-  MODIFY `photoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `photoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `Utilisateur`
 --
 ALTER TABLE `Utilisateur`
-  MODIFY `utilID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `utilID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

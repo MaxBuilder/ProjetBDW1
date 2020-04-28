@@ -14,7 +14,7 @@
             <?=DESCRIPTION?>
             </label>
             <br>
-            <textarea style="color:#181818;" type="text" name="DESCRIPTION" placeholder="Description" rows="4" cols="40"><?=$desc?></textarea>
+            <textarea style="color:#181818;" type="text" name="DESCRIPTION" placeholder="Description" rows="4" cols="40"><?=$photo->getDescription()?></textarea>
         </div>
         <br>
         <div>
@@ -27,7 +27,7 @@
                     { ?>
                         <option name="Categorie" value="<?php
                         echo $value->getNomCat();?>"
-                            <?php if($value->getCatId() == $selec)
+                            <?php if($value->getCatId() == $photo->getCatId())
                             echo'selected';?>>
                             <?=$value->getNomCat()?>
                         </option>
@@ -36,6 +36,11 @@
                     ?>
                 </select>
             </label>
+        </div>
+        <br>
+        <div>
+            <?=CHOIX_VISI?>
+            <input type="checkbox" name="visibility" <?php if($photo->getVisibility() == 0) echo 'checked'; ?> > Privé
         </div>
         <br>
         <div >

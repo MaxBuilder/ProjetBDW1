@@ -37,9 +37,16 @@ class CategorieDAO extends DAO {
     }
 
     public function checkCat($NomCat) {
-        $res=$this->queryRow('SELECT * FROM Categorie WHERE NomCat = ?', array($NomCat));
+        $res = $this->queryRow('SELECT * FROM Categorie WHERE NomCat = ?', array($NomCat));
         if($res)
             return true;
         else return false;
+    }
+
+    public  function countCat() {
+        $res = $this->queryRow('SELECT COUNT(*) AS nb FROM Categorie');
+        if($res)
+            return $res['nb'];
+        else return null;
     }
 }

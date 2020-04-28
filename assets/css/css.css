@@ -1,25 +1,32 @@
-/*
- * TP PHP
- * css du site
- *
- * Copyright 2016, Eric Dufour
- * http://techfacile.fr
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
-
 body {
     background-color: rgb(24,24,24);
     color: white;
 }
 
-/* Bouton de validation */
+.photo {
+	height: 300px;
+	overflow: hidden;
+}
+
+.photo img {
+	transition: transform .2s ease;
+}
+
+.photo:hover img {
+	transform: scale(1.2);
+}
+
+.elementCenter
+{
+	display:block;
+	margin:0 auto;
+}
+
 .validerbutton
 {
     background-color: #1178bc;
 	color: white;
-	border-radius: 30px;
+	border-radius: 5px;
 
 	width: 80px;
 	height: 30px;
@@ -34,7 +41,6 @@ body {
     background-color: #0755a3;
 }
 
-/* Navbar */
 .navbar {
     background: #323232;
 }

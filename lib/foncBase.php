@@ -35,6 +35,13 @@ function choixAlert($message, $nbP = 0)
         case 'MDP' :
             $alert['messageAlert'] = ERREUR_MDP;
             break;
+        case 'mdp_chang' :
+            $alert['messageAlert'] = ERREUR_ID_MDP;
+            break;
+        case 'mdp_chang_succ' :
+            $alert['messageAlert'] = MDP_CHANG_MDP;
+            $alert['classAlert'] = 'info';
+            break;
         case 'Identif' :
             $alert['messageAlert'] = ERREUR_IDENTIFIANT;
             break;
@@ -50,6 +57,10 @@ function choixAlert($message, $nbP = 0)
             break;
         case 'SuppressionOK' :
             $alert['messageAlert'] = SUPPR_OK;
+            $alert['classAlert'] = 'info';
+            break;
+        case 'ChangementPseudo':
+            $alert['messageAlert'] = CHANG_PSEUDO;
             $alert['classAlert'] = 'info';
             break;
         case 'SupprError' :

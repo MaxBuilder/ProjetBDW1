@@ -38,14 +38,19 @@
                         echo $_POST['categorie'];
                     else echo $value->getnomCat();?>"
                         <?php
-                        if(isset($_POST['choix_categorie']) && ($_POST['choix_categorie'] == $value->getNomCat()))
+                        if(isset($_POST['categorie']) && ($_POST['categorie'] == $value->getNomCat()))
                             echo'selected';?>>
                         <?=$value->getNomCat()?>
                     </option>
                     <?php
                 }
-                echo $_POST['choix_categorie']; ?>
+                echo $_POST['categorie']; ?>
             </select>
+        </div>
+        <br>
+        <div>
+            <?=CHOIX_VISI?>
+            <input type="checkbox" name="visibility"> Privé
         </div>
         <br>
         <div >

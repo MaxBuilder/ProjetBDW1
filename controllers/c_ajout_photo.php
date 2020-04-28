@@ -52,8 +52,11 @@ if(isset($_FILES['CHOIX_FICH']) && isset($_POST['CHOIX_CAT']) && isset($_POST['D
     }
 
     if($uploadOk == 1) {
+        if(isset($_POST['visibility']))
+            $vis = 0;
+        else $vis = 1;
         $catId = $catDAO->getCatId(htmlspecialchars($_POST['CHOIX_CAT']));
-        $photo = $photoDAO->insertPhoto($catId,htmlspecialchars($_POST['DESCRIPTION']),$_SESSION['utilID']);
+        $photo = $photoDAO->insertPhoto($catId,htmlspecialchars($_POST['DESCRIPTION']),$_SESSION['utilID'], $vis);
 
         if(!$photo)
             $alert = choixAlert($photoDAO->getErreur());

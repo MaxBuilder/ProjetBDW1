@@ -6,13 +6,15 @@ class Photo {
     private $_description;
     private $_catId;
     private $_userId;
+    private $_visibility;
 
-    public function __construct($photoId,$nomFich,$description,$catId, $userId) {
+    public function __construct($photoId,$nomFich,$description,$catId, $userId, $visibility) {
         $this->_photoId = $photoId;
         $this->_nomFich = $nomFich;
         $this->_description = $description;
         $this->_catId = $catId;
         $this->_userId = $userId;
+        $this->_visibility = $visibility;
     }
 
     public function getPhotoId() {
@@ -54,5 +56,12 @@ class Photo {
     public function  setUserId($userId) {
         $this->_userId = $userId;
     }
+
+    public function getVisibility() {
+        return $this->_visibility;
+    }
+
+    public function setVisibility($visibility) {
+        $this->_visibility = $visibility;
+    }
 }
-?>

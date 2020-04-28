@@ -14,16 +14,16 @@ if(is_null($cat)) {
 }
 
 $photo = $photoDAO->getImage($_GET['id']);
-$desc = $photo->getDescription();
-$selec = $photo->getCatId();
 
 if(isset($_POST['CHOIX_CAT']) && isset($_POST['DESCRIPTION'])) {
     if($_POST['CHOIX_CAT'] == "NONE") $alert = choixAlert('choix_de_cat');
 
     else {
+        if(isset($_POST['visibility']))
+            $vis = 0;
+        else $vis = 1;
         $catId = $catDAO->getCatId(htmlspecialchars($_POST['CHOIX_CAT']));
-
-        $modif = $photoDAO->updatePhoto($_GET['id'], $_POST['DESCRIPTION'], $catId);
+        $modif = $photoDAO->updatePhoto($_GET['id'], $_POST['DESCRIPTION'], $catId, $vis);
 
         if (!$modif)
             $alert = choixAlert($photoDAO->getErreur());

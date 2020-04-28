@@ -9,7 +9,7 @@
 
     <!--  Début formulaire -->
     <form action="" method="get">
-        <label>Quelles photos souhaitez-vous afficher ?
+        <label style="font-size: 15px">Quelles photos souhaitez-vous afficher ?
             <select style="color:#181818" name="choix_categorie" value="choix_categorie">
                 <option value="Toutes les photos">Toutes les photos</option>
                 <?php
@@ -27,9 +27,9 @@
 
     <?php foreach ($photoById as $value)
     {?>
-    <a href="index.php?page=image&id=<?=$value->getPhotoId()?>&user=<?=$value->getUserId()?>"><img src="<?=PATH_IMAGES.$value->getNomFich()?>"></a>
+    <a class="photo" href="index.php?page=image&id=<?=$value->getPhotoId()?>&user=<?=$value->getUserId()?>"><img src="<?=PATH_IMAGES.$value->getNomFich()?>"></a>
     <?php
-    }?>
+        }?>
     <!--  Fin formulaire -->
 
     <!--  Fin de la page -->

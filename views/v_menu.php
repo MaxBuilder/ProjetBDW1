@@ -31,7 +31,7 @@
           } ?>
 
           <?php
-          if($_GET['page'] == 'image' && (($_GET['user'] == $_SESSION['utilID']) || $_SESSION['perm'] == 0)) { ?>
+          if($_GET['page'] == 'image' && (($_GET['user'] == $_SESSION['utilID']) || $_SESSION['perm'] == 0) && isset($_SESSION['logged'])) { ?>
               <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
                   <a href="index.php?page=modifier&id=<?=$_GET['id']?>" style="font-size: 120%">
                       <?= MODIFIER ?>
@@ -65,6 +65,16 @@
               </a>
           <?php
           }?>
+
+          <?php
+          if(isset($_SESSION['logged']) && $_SESSION['perm'] == 0 && $_SESSION['logged'] == TRUE) { ?>
+          <li <?php echo($page == 'index' ? 'class="active"' : '') ?>>
+              <a href="index.php?page=panel_admin" style="font-size: 120%">
+                  <?= PANEL_ADMIN ?>
+              </a>
+          </li>
+          <?php
+          } ?>
 
           <li <?php echo ($page== 'index' ? ' class="active"':'')?>>
               <a href="index.php?page=connexion" style="font-size: 120%">

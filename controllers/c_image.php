@@ -1,6 +1,7 @@
 <?php
 require_once(PATH_MODELS.'photoDAO.php');
 require_once(PATH_MODELS.'categorieDAO.php');
+require_once(PATH_MODELS.'utilisateurDAO.php');
 
 
 // Début contrôleur image
@@ -9,8 +10,15 @@ if(isset($_GET['id'])){
     $img = $photoDAO->getImage($_GET['id']);
 }
 
-$CatDAO = new CategorieDAO(DEBUG);
-$cat = $CatDAO->getNomCat($img->getcatId());
+$catDAO = new CategorieDAO(DEBUG);
+$cat = $catDAO->getNomCat($img->getcatId());
+
+$UtilisateurDAO = new UtilisateurDAO((DEBUG));
+$author = $UtilisateurDAO->getPseudo($img->getUserId());
+
+if($img->getVisibility() == 1)
+    $visibilite = "Publique";
+else $visibilite = "Privée";
 
 if(isset($_GET['message']))
 {
