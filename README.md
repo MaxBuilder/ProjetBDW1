@@ -1,5 +1,5 @@
-#Projet Pinterest
+Projet Pinterest
 ---
-**Binome : Raphael & Thibaut**
+**Binome : Raphael Richard & Thibaut Peyric**
 
 Projet fait dans le cadre de L'UE *BDW1*
