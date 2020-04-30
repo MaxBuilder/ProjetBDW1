@@ -57,11 +57,11 @@ class UtilisateurDAO extends DAO {
     }
 
     public function getPerm($pseudo) {
-        $res = $this->queryRow('SELECT permission FROM utilisateur WHERE pseudo = ?', array($pseudo));
+        $res = $this->queryRow('SELECT permission FROM Utilisateur WHERE pseudo = ?', array($pseudo));
         if (empty($res)) {
             return 1;
         }
-        return $res[0]['permission'];
+        return $res['permission'];
     }
 
     public function countUsers() {
